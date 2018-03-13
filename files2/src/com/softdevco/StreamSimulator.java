@@ -1,19 +1,24 @@
 package com.softdevco;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
+import java.io.*;
 
 /**
  * simulates InputStream and OutputStream for testing
  */
 public class StreamSimulator {
   /**
+   * sets input for system.in
+   */
+  public static void systemSetIn(){
+    byte[][] arr = new byte[][]{{97,98,99,100}, {97,98,13,99,100}, {97,98,10,99,100}, {97,98,13,100}, {97,13,10,10,98}, {97,13,13,98},{}};
+    System.setIn(new ByteArrayInputStream(arr[3]));
+  }
+  /**
    *
    * @return InputStream instance
    */
   public static InputStream getInputStream() {
-    byte[] data = {0x33, 0x45, 0x01};
+    byte[] data = {65, 13, 10, 10, 13};
     return new ByteArrayInputStream(data);
   }
 
@@ -21,7 +26,7 @@ public class StreamSimulator {
    *
    * @return bytes array
    */
-  public static byte[] getOutputStream() {
+  public static byte[] getOutputStreamAsByteArray() {
     ByteArrayOutputStream outputStream =
       new ByteArrayOutputStream();
     return outputStream.toByteArray();

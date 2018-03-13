@@ -1,30 +1,41 @@
 package com.softdevco;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 /**
  * main files2 class
  */
 public class Main {
-  /**
-   * prints checksum of InputStream data
-   *
-   * @param args - no args needed
-   * @throws IOException
-   */
-  public static void main(String[] args) throws IOException {
-    InputStream inputStream = StreamSimulator.getInputStream();
-    int totalBytesRead = 0;
-    byte[] buff = new byte[1];
-    int checksum = 0;
-    int blockSize;
-    while ((blockSize = inputStream.read(buff)) > 0) {
-      totalBytesRead += blockSize;
-      checksum = Integer.rotateLeft(checksum, 1) ^ Byte.toUnsignedInt(buff[0]);
-    }
-    System.out.println(checksum);
-    System.out.println(totalBytesRead);
+    /**
+     * prints checksum of InputStream data
+     *
+     * @param args - no args needed
+     * @throws IOException
+     */
+    public static void main(String[] args) throws IOException {
 
-  }
+        StreamSimulator.systemSetIn();
+        boolean wasSymbolR = false;
+        int x;
+        while ((x = System.in.read()) != -1) {
+            if (wasSymbolR == true) {
+                if (x == 10) {
+                    System.out.write(x);
+                    wasSymbolR = false;
+                    continue;
+                } else {
+                    System.out.write(13);
+                }
+            }
+            if (x == 13) {
+                wasSymbolR = true;
+                continue;
+            }
+            System.out.write(x);
+            wasSymbolR = false;
+        }
+        System.out.flush();
+        System.out.close();
+    }
+}
 }
