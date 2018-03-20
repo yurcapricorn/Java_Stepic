@@ -3,6 +3,9 @@ package com.softdevco;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Animal class
+ */
 class Animal implements Serializable {
     private final String name;
 

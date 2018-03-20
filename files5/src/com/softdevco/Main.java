@@ -2,8 +2,15 @@ package com.softdevco;
 
 import java.io.*;
 
+/**
+ * Stepic Java basic course task 5.4
+ */
 public class Main {
-
+    /**
+     * test method
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
 
         Animal[] animals = deserializeAnimalArray(byteInputGenerator());
@@ -13,6 +20,11 @@ public class Main {
         }
     }
 
+    /**
+     * method for task
+     * @param data raw bytes input
+     * @return animals array
+     */
     public static Animal[] deserializeAnimalArray(byte[] data) {
         Animal[] animals = null;
         try {
@@ -31,6 +43,11 @@ public class Main {
         return animals;
     }
 
+    /**
+     * bytes array input prepare method
+     * @return
+     * @throws IOException
+     */
     static byte[] byteInputGenerator() throws IOException {
         Animal[] animals = {new Animal("Cat"), new Animal("Dog"), new Animal("Elephant"),
                 new Animal("Cock"), new Animal("Bull"), new Animal("Ant"),

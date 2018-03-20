@@ -2,7 +2,14 @@ package com.softdevco;
 
 import java.io.*;
 
+/**
+ * test class for aerialisation to files
+ */
 class Test {
+    /**
+     * serialize
+     * @param amount
+     */
     static void serializeToFile(int amount) {
         String filename = "file.ser";
         try {
@@ -25,6 +32,9 @@ class Test {
         }
     }
 
+    /**
+     * deserialise
+     */
     static void deserialize() {
         String filename = "file.ser";
         Animal[] animals;
