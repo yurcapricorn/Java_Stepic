@@ -1,6 +1,7 @@
 package com.softdevco;
 
 import java.util.*;
+import java.util.function.*;
 
 /**
  * class for stepic collections task 2
